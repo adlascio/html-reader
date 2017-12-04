@@ -5,7 +5,7 @@ var requestOptions = {
   path: '/http-examples/step1.html'
 };
 
-function getAndPrintHTML(options) {
+function getAndPrintHTML(options, cb) {
     
   html = '';
     
@@ -21,10 +21,14 @@ function getAndPrintHTML(options) {
         
     response.on('end', function() {
       console.log('Response stream complete.');
-      console.log(html);
+      return cb(html);
     });
   });
     
 }
 
-getAndPrintHTML(requestOptions);
+
+var myCallback = function (html) {
+  console.log('html:', html);
+};
+getAndPrintHTML(requestOptions, myCallback);
