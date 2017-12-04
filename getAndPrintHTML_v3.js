@@ -1,17 +1,18 @@
 var https = require('https');
 
-function getAndPrintHTML(cb) {
+var requestOptions = {
+  host: 'sytantris.github.io',
+  path: '/http-examples/step1.html'
+};
+
+function getAndPrintHTML(options, cb) {
     
   html = '';
     
-  var requestOptions = {
-    host: 'sytantris.github.io',
-    path: '/http-examples/step1.html'
-  };
     
 //  var result = [];
     
-  https.get(requestOptions, function(response) {
+  https.get(options, function(response) {
     response.setEncoding('utf8');
     response.on('data', function(data) {
 //      result.push(data);
@@ -30,4 +31,4 @@ function getAndPrintHTML(cb) {
 var myCallback = function (html) {
   console.log('html:', html);
 };
-getAndPrintHTML(myCallback);
+getAndPrintHTML(requestOptions, myCallback);
