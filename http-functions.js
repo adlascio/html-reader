@@ -1,11 +1,6 @@
 var https = require('https');
 
-var requestOptions = {
-  host: 'sytantris.github.io',
-  path: '/http-examples/step1.html'
-};
-
-function getHTML(options, cb) {
+module.exports = function getHTML(options, cb) {
     
   html = '';
     
@@ -25,10 +20,5 @@ function getHTML(options, cb) {
     });
   });
     
-}
-
-
-var myCallback = function (html) {
-  console.log('html:', html);
 };
-getHTML(requestOptions, myCallback);
+
